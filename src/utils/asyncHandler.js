@@ -1,16 +1,18 @@
 // const asyncHandler=()=>{}
 
-export {asyncHandler}
 
-const asyncHandler=(fun)=async(req,res,next)=>{
+const asyncHandler = (fun) =>async(req,res,next)=>{
 try {
-    await fun(req,res,next)
+  return  await fun(req,res,next)
 } catch (error) {
-    res.status(err.code || 500).json({
+    res.status(500).json({
         success:false,
-        message:err.message
+        message:error.message
     })
     
 }
 
 }
+
+
+export {asyncHandler}
